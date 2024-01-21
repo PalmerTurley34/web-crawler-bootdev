@@ -41,7 +41,7 @@ async function crawlPage(baseURL, currentURL, pages) {
     }
     const norm_url = normalizeURL(currentURL)
     if (pages[norm_url] !== undefined) {
-        console.log(`Already visited ${norm_url}`)
+        // console.log(`Already visited ${norm_url}`)
         pages[norm_url]++
         return pages
     }
@@ -50,12 +50,11 @@ async function crawlPage(baseURL, currentURL, pages) {
     } else {
         pages[norm_url] = 1
     }
-    // console.log(`Fetching data from ${currentURL}`)
     let page_html
     try {
         page_html = await getPageHTML(currentURL)
     } catch (err) {
-        console.log(`Error at ${currentURL} : ${err}`)
+        // console.log(`Error at ${currentURL} : ${err}`)
         return pages
     }
     const all_urls = getURLsFromHTML(page_html, baseURL)
